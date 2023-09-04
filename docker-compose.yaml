@@ -1,0 +1,8 @@
+version: "2.0"
+services:
+  bot:
+    build:
+      context: .
+    restart: always
+    ports:
+      - "127.0.0.1:80"
