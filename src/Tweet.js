@@ -7,6 +7,7 @@ import { ReactComponent as Like } from './assets/like.svg';
 import { ReactComponent as Bookmark } from './assets/bookmark.svg';
 import { ReactComponent as Share } from './assets/share.svg';
 import Card from 'react-bootstrap/Card';
+import Fade from 'react-bootstrap/Fade';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TweetFetcher = ({ onTweetFetched }) => {
@@ -28,7 +29,6 @@ const TweetFetcher = ({ onTweetFetched }) => {
 
 const TweetDisplay = ({ tweet, time }) => {
   const iconStyle = { fill: '#858585', width: 35, height: 35 };
-
   const twitterShare = () => {
     const url = `https://twitter.com/intent/tweet?text=${tweet}%20%0ahttps://raika.giratina.net`;
     window.open(url, '_blank');
@@ -39,40 +39,41 @@ const TweetDisplay = ({ tweet, time }) => {
   };
 
   return (
-    <Card style={{ width: '850px' }}>
-      <div className="tweet" style={{ visibility: tweet ? "visible" : "hidden" }}>
-        <div className="user">
-          <a href="https://denonbu.jp/character/harajuku/mimito" class="link-offset-2 link-underline link-underline-opacity-0">
-            <img src="logo512.jpg" alt="icon" className="icon" />
-          </a>
-          <div className="user-info">
-            <a href="https://twitter.com/aaruaika" class="link-offset-2 link-underline link-underline-opacity-0">
-              <p className="username">Raika</p>
+    <Fade in={tweet ? true : false}>
+      <Card className="tweet-card">
+        <div className="tweet" style={{ visibility: tweet ? "visible" : "hidden" }}>
+          <div className="user">
+            <a href="https://denonbu.jp/character/harajuku/mimito" class="link-offset-2 link-underline link-underline-opacity-0">
+              <img src="logo512.jpg" alt="icon" className="icon" />
             </a>
-            <a href="https://twitter.com/aaruaika" class="link-offset-2 link-underline link-underline-opacity-0">
-              <p className="userid">@aaruaika</p>
-            </a>
+            <div className="user-info">
+              <a href="https://twitter.com/aaruaika" class="link-offset-2 link-underline link-underline-opacity-0">
+                <p className="username">Raika</p>
+              </a>
+              <a href="https://twitter.com/aaruaika" class="link-offset-2 link-underline link-underline-opacity-0">
+                <p className="userid">@aaruaika</p>
+              </a>
+            </div>
+          </div>
+          <div className="tweet-text">{tweet}</div><br />
+          <div className="time">{time}</div>
+          <hr color="#858585" size="0.5" />
+          <div className="tweet-actions">
+            <Reply style={iconStyle} onClick={raika} />
+            <Retweet style={iconStyle} />
+            <Like style={iconStyle} />
+            <Bookmark style={iconStyle} />
+            <Share style={iconStyle} onClick={twitterShare} />
           </div>
         </div>
-        <div className="tweet-text">{tweet}</div><br />
-        <div className="time">{time}</div>
-        <hr color="#858585" size="0.5" />
-        <div className="tweet-actions">
-          <Reply style={iconStyle} onClick={raika} />
-          <Retweet style={iconStyle} />
-          <Like style={iconStyle} />
-          <Bookmark style={iconStyle} />
-          <Share style={iconStyle} onClick={twitterShare} />
-        </div>
-      </div>
-    </Card>
+      </Card>
+    </Fade>
   );
 };
 
 const Tweet = () => {
   const [tweet, setTweet] = useState("");
   const [time, setTime] = useState("");
-
   useEffect(() => {
     const currentTime = new Date();
     const year = currentTime.getFullYear();

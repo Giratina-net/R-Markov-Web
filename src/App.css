@@ -9,3 +9,12 @@ body{
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width: 800px){
+    .tweet-timeline{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
