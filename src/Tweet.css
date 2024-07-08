@@ -1,0 +1,64 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a, a:hover, a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tweet {
+  padding: 20px;
+}
+
+.user-info {
+  padding-top: 10px;
+  float: left;
+  margin-left: 20px;
+  line-height: 30%;
+}
+
+.icon {
+  float: left;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+}
+
+.username {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.userid {
+  color: #858585;
+  font-size: 20px;
+}
+
+.tweet-text {
+  float: none;
+  font-size: 25px;
+  margin-top: 70px;
+}
+
+.time {
+  margin-right: 20px;
+  color: #858585;
+  font-size: 20px;
+}
+
+.tweet-actions {
+  display: flex;
+  justify-content: space-around; /* or space-between */
+  margin-top: 10px; /* Adjust as needed */
+}
+
+path {
+  fill: #858585;
+}
+
+.reply, .retweet, .like, .bookmark, .share {
+  float: left;
+  margin-left: 10%;
+  cursor: pointer;
+}
